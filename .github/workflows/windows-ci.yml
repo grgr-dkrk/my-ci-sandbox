@@ -42,6 +42,8 @@ jobs:
       run: |
         yarn build
         yarn tsc
+
+    - run: npx react-native-windows-init --no-telemetry --overwrite
         
     - name: NuGet restore
       run: nuget restore example\windows\ProgressViewExample.sln
