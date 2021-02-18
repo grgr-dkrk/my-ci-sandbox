@@ -34,7 +34,7 @@ jobs:
     - name: Install node modules
       if: steps.yarn-cache.outputs.cache-hit != 'true'
       run: 
-        yarn add react-native@0.61 --dev
+        yarn add react-native@0.62 --dev
         yarn --pure-lockfile
     
     - name: yarn build
