@@ -1,6 +1,5 @@
 name: Windows CI
 on: [push]
-
 jobs:
   run-windows-tests:
     name: Build & run tests
@@ -18,7 +17,7 @@ jobs:
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.0.2
       with:
-        vs-version: 16.8
+        vs-version: 16.5
 
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.5
@@ -38,7 +37,7 @@ jobs:
         yarn --pure-lockfile
     
     - name: yarn build
-      #if: steps.yarn-cache.outputs.cache-hit == 'true'
+      if: steps.yarn-cache.outputs.cache-hit == 'true'
       run: |
         yarn build
         yarn tsc
@@ -48,18 +47,4 @@ jobs:
 
     - name: Build x64 release
       run: npx react-native run-windows --root example --arch x64 --release --no-packager --no-deploy --logging
- 
-    # - name: Deploy
-    #   shell: powershell
-    #   run: |
-    #     cd example
-    #     Copy-Item -Path windows\x64\Release -Recurse -Destination windows\
-    #     npx react-native run-windows --arch x64 --release --no-build --no-packager
 
-      
-    # - name: Start Appium server
-    #   shell: powershell
-    #   run: Start-Process PowerShell -ArgumentList "yarn appium"
-      
-    # - name: Run tests
-    #   run: yarn test:windows
