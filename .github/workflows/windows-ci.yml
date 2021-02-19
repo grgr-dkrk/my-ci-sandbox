@@ -47,7 +47,7 @@ jobs:
       run: nuget restore example\windows\ProgressViewExample.sln
 
     - name: Build x64 release
-      run: npx react-native run-windows --root example/windows --arch x64 --release --no-packager --no-deploy --logging
+      run: msbuild .\example\windows\ProgressViewExample.sln /p:Configuration=Release /p:Platform=x64 -m
  
     # - name: Deploy
     #   shell: powershell
