@@ -45,6 +45,10 @@ jobs:
         
     - name: NuGet restore
       run: nuget restore example\windows\ProgressViewExample.sln
+      
+    - name: hoge
+      shell: powershell
+      run: Set-ExecutionPolicy Unrestricted -Scope Process -Force; iex (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/microsoft/react-native-windows/master/vnext/Scripts/rnw-dependencies.ps1')
 
     - name: Build x64 release
       run: msbuild .\example\windows\ProgressViewExample.sln /p:Configuration=Release /p:Platform=x64 -m
