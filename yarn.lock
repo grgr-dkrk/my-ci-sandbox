@@ -8557,7 +8557,7 @@ react-native-macos@^0.62.0-0:
     use-subscription "^1.0.0"
     whatwg-fetch "^3.0.0"
 
-react-native-windows@^0.63.3:
+react-native-windows@^0.63.0-0:
   version "0.63.22"
   resolved "https://registry.yarnpkg.com/react-native-windows/-/react-native-windows-0.63.22.tgz#dc5331889925ae2e888e53d9a683b2291eb0d46c"
   integrity sha512-+FITwiEUBbjtK0JsyoZXDBM3seQsF1R3IwQfGJSdRKeekhTIALZmb/1JK8fii7MTFKiBZ7KHAhVnf17qbhazmA==

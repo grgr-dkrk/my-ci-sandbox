@@ -1,14 +1,15 @@
 #include "pch.h"
 #include "ReactPackageProvider.h"
-#include "ReactPackageProvider.g.cpp"
-#include "ProgressViewViewManager.h"
+#include "NativeModules.h"
 
 using namespace winrt::Microsoft::ReactNative;
 
-namespace winrt::progress_view::implementation {
+namespace winrt::progress-view::implementation
+{
 
-    void ReactPackageProvider::CreatePackage(IReactPackageBuilder const& packageBuilder) noexcept {
-        packageBuilder.AddViewManager(L"ProgressViewViewManager", []() { return winrt::make<ProgressViewViewManager>(); });
-    }
+void ReactPackageProvider::CreatePackage(IReactPackageBuilder const &packageBuilder) noexcept
+{
+    AddAttributedModules(packageBuilder);
+}
 
-} // namespace winrt::progress_view::implementation
+} // namespace winrt::progress-view::implementation

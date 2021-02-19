@@ -1,20 +1,13 @@
 #pragma once
-#include "ReactPackageProvider.g.h"
 
-using namespace winrt::Microsoft::ReactNative;
+#include "winrt/Microsoft.ReactNative.h"
 
-namespace winrt::progress_view::implementation {
-
-    struct ReactPackageProvider : ReactPackageProviderT<ReactPackageProvider> {
-        ReactPackageProvider() = default;
-
-        void CreatePackage(IReactPackageBuilder const& packageBuilder) noexcept;
+namespace winrt::progress-view::implementation
+{
+    struct ReactPackageProvider : winrt::implements<ReactPackageProvider, winrt::Microsoft::ReactNative::IReactPackageProvider>
+    {
+    public: // IReactPackageProvider
+        void CreatePackage(winrt::Microsoft::ReactNative::IReactPackageBuilder const &packageBuilder) noexcept;
     };
+} // namespace winrt::progress-view::implementation
 
-} // namespace winrt::progress_view::implementation
-
-namespace winrt::progress_view::factory_implementation {
-
-    struct ReactPackageProvider : ReactPackageProviderT<ReactPackageProvider, implementation::ReactPackageProvider> {};
-
-} // namespace winrt::progress_view::factory_implementation
