@@ -49,7 +49,7 @@ jobs:
       run: nuget restore example\windows\ProgressViewExample.sln
 
     - name: Build x64 release
-      run: npx react-native run-windows --root example --arch x64 --release --no-packager --no-deploy --logging
+      run: npx react-native run-windows --root example/windows --arch x64 --release --no-packager --no-deploy --logging
  
     # - name: Deploy
     #   shell: powershell
