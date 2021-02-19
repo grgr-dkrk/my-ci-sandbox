@@ -48,9 +48,11 @@ jobs:
       run: Set-ExecutionPolicy Unrestricted -Scope Process -Force; iex (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/microsoft/react-native-windows/master/vnext/Scripts/rnw-dependencies.ps1')
         
     - name: NuGet restore
+      shell: powershell
       run: nuget restore example\windows\ProgressViewExample.sln
 
     - name: Build x64 release
+      shell: powershell
       run: npx react-native run-windows --root example --arch x64 --release --no-packager --no-deploy --logging
  
     - name: Deploy
