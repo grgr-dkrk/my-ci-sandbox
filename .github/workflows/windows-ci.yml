@@ -1,5 +1,6 @@
 name: Windows CI
 on: [push]
+
 jobs:
   run-windows-tests:
     name: Build & run tests
@@ -47,4 +48,17 @@ jobs:
 
     - name: Build x64 release
       run: npx react-native run-windows --root example --arch x64 --release --no-packager --no-deploy --logging
-
+ 
+    - name: Deploy
+      shell: powershell
+      run: |
+        cd example
+        Copy-Item -Path windows\x64\Release -Recurse -Destination windows\
+        npx react-native run-windows --arch x64 --release --no-build --no-packager
+      
+    - name: Start Appium server
+      shell: powershell
+      run: Start-Process PowerShell -ArgumentList "yarn appium"
+      
+    - name: Run tests
+      run: yarn test:windows
